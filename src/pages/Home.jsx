@@ -5,8 +5,10 @@ import Footer from '../components/Footer/Footer';
 export default (props) => {
     return (
         <>
-        <Header />
-        <Footer />
+            <Header />
+            <div style={{ height: "480px" }}>
+            </div>
+            <Footer />
         </>
     );
 };
