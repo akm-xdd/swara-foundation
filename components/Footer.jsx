@@ -56,7 +56,7 @@ export default function Footer() {
                 <Icon className="fab fa-instagram" aria-hidden="true"></Icon>
                 <Icon className="fas fa-envelope" aria-hidden="true"></Icon>
             </IconContainer>
-            <CopyrightText>© Copyright 2024 Anurag Kumar Thakur</CopyrightText>
+            <CopyrightText>© Copyright 2024 Swara Foundation</CopyrightText>
         </FooterContainer>
     );
 }

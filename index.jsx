@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound"
 import Layout from "./components/Layout"
 import Donate from './pages/Donate';
 import { ToastContainer } from 'react-toastify';
+import AdminPanel from './pages/AdminPanel';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="donate"element={<Donate/>}/>
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="/admin/*" element={<AdminPanel />} />
       </Routes>
     </BrowserRouter>
   )

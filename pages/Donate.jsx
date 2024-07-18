@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
-import './Donate.css';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './Donate.css';
 
 const Donate = () => {
   const [pincode, setPincode] = useState('');
   const [showForm, setShowForm] = useState(false);
-  const [isValidPincode, setIsValidPincode] = useState(0);
+  const [isValidPincode, setIsValidPincode] = useState(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
     description: '',
-    weight: ''
+    weight: '',
+    address: ''
   });
   const [submissionMessage, setSubmissionMessage] = useState('');
-  
-  const validPincodes = [110001, 110002, 110003, 110004, 110005];
+
+  const navigate = useNavigate();
+  const validPincodes = [110001, 110002, 110003, 110004, 110005, 110078];
 
   const handlePincodeCheck = () => {
     if (validPincodes.includes(parseInt(pincode))) {
@@ -40,18 +43,21 @@ const Donate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://jsonplaceholder.typicode.com/posts', formData);
+      const response = await axios.post('http://localhost:5000/api/donations', formData);
       if (response.status === 201) {
         setSubmissionMessage('Form submitted successfully!');
-        // Reset form fields
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          description: '',
-          weight: ''
-        });
+        setTimeout(() => {
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            description: '',
+            weight: '',
+            address: ''
+          });
+          navigate('/');
+        }, 1000); 
       } else {
         setSubmissionMessage('Failed to submit form. Please try again.');
       }
@@ -64,14 +70,12 @@ const Donate = () => {
     <div className="donate-container">
       <h2>Donate</h2>
       <p>Your donation of clothes, money, or books can make a significant difference. Join us in our mission to support those in need.</p>
-      
       <div className="donate-section">
         <div className="donate-half left-half">
           <h3>Importance of Donation</h3>
           <img src="https://storage.googleapis.com/dara-c1b52.appspot.com/daras_ai/media/a3202e58-17ef-11ee-9a70-8e93953183bb/cleaned_qr.png" alt="UPI QR Code" className="qr-code"/>
           <p>Scan the QR code to donate. Your generosity helps us reach more people in need.</p>
         </div>
-        
         <div className="donate-half right-half">
           <h3>Check Availability in Your Area</h3>
           <Form>
@@ -86,7 +90,6 @@ const Donate = () => {
             </Form.Group>
             <Button variant="success" onClick={handlePincodeCheck} className="check-button">Check</Button>
           </Form>
-          
           {isValidPincode === false && (
             <Alert variant="danger" className="mt-3">
               Sorry, we are not available in your area yet.
@@ -97,7 +100,6 @@ const Donate = () => {
               </address>
             </Alert>
           )}
-
           {showForm && (
             <Form className="donation-form mt-3" onSubmit={handleSubmit}>
               <h3>Donation Form</h3>
@@ -118,23 +120,20 @@ const Donate = () => {
               </Form.Group>
               <Form.Group controlId="weight">
                 <Form.Control as="select" className="form-select" value={formData.weight} onChange={handleChange} required>
-                  <option value="" disabled>Choose weight of donation</option>
-                  <option value="2kg">2 kg</option>
-                  <option value="4kg">4 kg</option>
-                  <option value="6kg">6 kg</option>
-                  <option value="8kg">8 kg</option>
-                  <option value="10kg">10 kg</option>
+                  <option value="">Select weight</option>
+                  <option value="0-5kg">0-5 kg</option>
+                  <option value="5-10kg">5-10 kg</option>
+                  <option value="10-20kg">10-20 kg</option>
+                  <option value="20+kg">20+ kg</option>
                 </Form.Control>
               </Form.Group>
-              <Button type="submit" variant="success" className="submit-button">Submit</Button>
+              <Form.Group controlId="address">
+                <Form.Control type="text" placeholder="Address" className="form-input" value={formData.address} onChange={handleChange} required />
+              </Form.Group>
+              <Button type="submit" variant="primary">Submit</Button>
             </Form>
           )}
-          
-          {submissionMessage && (
-            <Alert variant={submissionMessage === 'Form submitted successfully!' ? 'success' : 'danger'} className="mt-3">
-              {submissionMessage}
-            </Alert>
-          )}
+          {submissionMessage && <Alert variant={submissionMessage.includes('successfully') ? 'success' : 'danger'}>{submissionMessage}</Alert>}
         </div>
       </div>
     </div>
