@@ -20,7 +20,10 @@ const Donate = () => {
   const [submissionMessage, setSubmissionMessage] = useState('');
 
   const navigate = useNavigate();
-  const validPincodes = [110001, 110002, 110003, 110004, 110005, 110078];
+  const validPincodes = [110010, 110016, 110021, 110022, 110023, 110028, 110029, 110030, 110037, 
+  110038, 110043, 110045, 110046, 110047, 110057, 110061, 110064, 110066, 
+  110067, 110068, 110070, 110071, 110072, 110073, 110074, 110075, 110077, 
+  110078, 110097];
 
   const handlePincodeCheck = () => {
     if (validPincodes.includes(parseInt(pincode))) {
