@@ -1,36 +1,34 @@
-import React from 'react'
+import React from 'react';
 
 function Carousel() {
   return (
-    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <div id="hero-carousel" className="carousel slide" data-bs-ride="carousel">
+      <div className="carousel-indicators">
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <div className="carousel-inner">
+        <div className="carousel-item active c-item">
+          <img src="https://plus.unsplash.com/premium_photo-1682092585257-58d1c813d9b4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="d-block w-100 c-img" alt="Slide 1"/>
+        </div>
+        <div className="carousel-item c-item">
+          <img src="https://plus.unsplash.com/premium_photo-1682092618317-9b50d60e6e0d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="d-block w-100 c-img" alt="Slide 2"/>
+        </div>
+        <div className="carousel-item c-item">
+          <img src="https://media.istockphoto.com/id/488273780/photo/mult-ethnic-large-group-of-children-hold-teamwork-sign-outdoors.jpg?s=1024x1024&w=is&k=20&c=k37kSvXIZObsRnNO78ehansGyJwSgxuAcI5VWhqiPgA=" className="d-block w-100 c-img" alt="Slide 3"/>
+        </div>
+      </div>
+
+      <button className="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button className="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
     </div>
-
-    <div class="carousel-inner">
-      <div class="carousel-item active c-item">
-        <img src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?fit=crop&w=1964&q=100" class="d-block w-100 c-img" alt="Slide 1"/>
-      </div>
-
-      <div class="carousel-item c-item">
-        <img src="https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?fit=crop&w=2134&q=100" class="d-block w-100 c-img" alt="Slide 2"/>
-      </div>
-
-      <div class="carousel-item c-item">
-        <img src="https://images.unsplash.com/photo-1612686635542-2244ed9f8ddc?fit=crop&w=2070&q=100" class="d-block w-100 c-img" alt="Slide 3"/>
-      </div>
-    </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </button>
-  </div>
-  )
+  );
 }
 
-export default Carousel
+export default Carousel;

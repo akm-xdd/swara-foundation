@@ -1,4 +1,6 @@
+import './Question.css';
 import React from 'react';
+ // Import the CSS file
 
 const faqs = [
     {
@@ -8,20 +10,28 @@ const faqs = [
     {
         question: "How will Smile Foundation keep me updated on the progress of the children supported through my donation?",
         answer: "Smile Foundation values transparency and keeps donors updated on the progress of the children supported through regular communication. You will receive newsletters, impact reports, or personalized updates on the children's achievements, academic progress, and success stories."
+    },
+    {
+      question : "Are my donations to the Mission Education(ME) programme eligible for tax benefits?",
+      answer: "Yes, donations made to Smile Foundation's Mission Education programme are eligible for tax benefits under the applicable provisions of the income tax laws in your country. You will receive a tax receipt for your donation, which you can use for tax purposes."
+    },
+    {
+      question:"How does Smile Foundation ensure transparency and accountability in the utilization of funds for the programmes?",
+      answer : "Smile Foundation maintains strict financial guidelines and undergoes regular audits to ensure transparency and accountability in the utilization of funds. We publish financial reports on our website, providing a breakdown of the expenses and impact created by the programmes."
     }
 ];
 
 function Question() {
   return (
-    <div>
+    <div className="faq-container">
       {faqs.map((faq, index) => (
-        <div className="p-2" key={index}>
-          <p className="d-inline-flex gap-1">
-            <a className="btn btn-primary" data-bs-toggle="collapse" href={`#c${index}`} role="button" aria-expanded="false" aria-controls="collapseExample">
+        <div className="faq-item" key={index}>
+          <p className="faq-question">
+            <a className="btn btn-primary faq-button" data-bs-toggle="collapse" href={`#c${index}`} role="button" aria-expanded="false" aria-controls={`c${index}`}>
               {faq.question}
             </a>
           </p>
-          <div className="collapse" id={`c${index}`}>
+          <div className="collapse faq-answer" id={`c${index}`}>
             <div className="card card-body">
               {faq.answer}
             </div>

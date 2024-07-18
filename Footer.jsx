@@ -1,22 +1,62 @@
-import React from "react"
+import React from 'react';
+import styled from 'styled-components';
+
+const FooterContainer = styled.footer`
+    background-color: #fdf6f0;
+    color: #000;
+    padding: 5%;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    font-weight: 500;
+    flex-direction: column;
+    text-align: center;
+`;
+
+const Heading = styled.h3`
+    font-family: 'Kaisei HarunoUmi', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+`;
+
+const EndingText = styled.p`
+    margin: 4% 0;
+`;
+
+const IconContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+`;
+
+const Icon = styled.i`
+    font-size: 2rem;
+    margin: 0.5rem;
+`;
+
+const CopyrightText = styled.p`
+    margin-top: 2rem;
+`;
 
 export default function Footer() {
     return (
-        <footer>
-                <h3>Let us come together</h3>
-                <p class="ending-text">
-                    Follow us on Instagram and Facebook to keep updated on whats new and whats hot
-                </p>
+        <FooterContainer>
+            <Heading>Let us come together</Heading>
+            <EndingText>
+                Follow us on Instagram and Facebook to keep updated on what's new and what's hot
+            </EndingText>
 
-                <div className = "container-fluid">
-                    <div class="row social-row text-center">
-                        <div class=" col-lg-3 col-sm-12">  <i class="social-icon fa-2x fab fa-facebook" aria-hidden="true"></i> </div>
-                        <div class="col-lg-3 col-sm-12">  <i class="social-icon fa-2x fab fa-twitter" aria-hidden="true"></i></div>
-                        <div class=" col-lg-3 col-sm-12">  <i class="social-icon fa-2x fab fa-instagram" aria-hidden="true"></i></div>
-                        <div class=" col-lg-3 col-sm-12">  <i class="social-icon fa-2x fas fa-envelope" aria-hidden="true"></i></div>
-                    </div>
-                </div>
-                <p class="copyright-text">© Copyright 2024 Anurag Kumar Thakur </p>
-        </footer>
-    )
+            <IconContainer>
+                <Icon className="fab fa-facebook" aria-hidden="true"></Icon>
+                <Icon className="fab fa-twitter" aria-hidden="true"></Icon>
+                <Icon className="fab fa-instagram" aria-hidden="true"></Icon>
+                <Icon className="fas fa-envelope" aria-hidden="true"></Icon>
+            </IconContainer>
+            <CopyrightText>© Copyright 2024 Anurag Kumar Thakur</CopyrightText>
+        </FooterContainer>
+    );
 }
