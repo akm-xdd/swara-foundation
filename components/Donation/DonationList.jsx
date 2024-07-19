@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Table, Button, Alert } from 'react-bootstrap';
+import { Button, Table, Alert } from 'react-bootstrap';
 
 const DonationList = ({ type }) => {
   const [donations, setDonations] = useState([]);
   const [message, setMessage] = useState('');
-  const [refresh, setRefresh] = useState(false);
 
   const fetchDonations = async () => {
     try {
@@ -18,45 +17,44 @@ const DonationList = ({ type }) => {
 
   useEffect(() => {
     fetchDonations();
-  }, [refresh]);
-
-  const handleMessage = (msg, success = true) => {
-    setMessage(msg);
-    setTimeout(() => {
-      setMessage('');
-    }, 1000); 
-  };
+  }, []);
 
   const deleteDonation = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/donations/${id}`);
-      handleMessage('Donation deleted successfully');
-      setRefresh(!refresh);
+      setMessage('Donation deleted successfully');
+      fetchDonations();
       setTimeout(() => {
-        fetchDonations();
-      }, 1000); // Adjust the delay as needed
+        setMessage('');
+      }, 2000);
     } catch (error) {
-      handleMessage('Failed to delete donation', false);
+      setMessage('Failed to delete donation');
+      setTimeout(() => {
+        setMessage('');
+      }, 2000);
     }
   };
 
   const completeDonation = async (id) => {
     try {
       await axios.put(`http://localhost:5000/api/donations/${id}/complete`);
-      handleMessage('Donation marked as completed');
-      setRefresh(!refresh);
+      setMessage('Donation marked as completed');
+      fetchDonations();
       setTimeout(() => {
-        fetchDonations();
-      }, 1000); // Adjust the delay as needed
+        setMessage('');
+      }, 2000);
     } catch (error) {
-      handleMessage('Failed to mark donation as completed', false);
+      setMessage('Failed to mark donation as completed');
+      setTimeout(() => {
+        setMessage('');
+      }, 2000);
     }
   };
 
   return (
     <div>
       {message && <Alert variant="info">{message}</Alert>}
-      <Table striped bordered hover className="donation-table">
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>First Name</th>
@@ -66,6 +64,8 @@ const DonationList = ({ type }) => {
             <th>Description</th>
             <th>Weight</th>
             <th>Address</th>
+            <th>Date</th>
+            <th>Time Slot</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>
@@ -82,8 +82,10 @@ const DonationList = ({ type }) => {
                 <td>{donation.description}</td>
                 <td>{donation.weight}</td>
                 <td>{donation.address}</td>
+                <td>{donation.date}</td>
+                <td>{donation.timeSlot}</td>
                 <td>{donation.status}</td>
-                <td className="actions">
+                <td>
                   {donation.status !== 'Completed' && (
                     <Button variant="success" size="sm" onClick={() => completeDonation(donation._id)}>Complete</Button>
                   )}
