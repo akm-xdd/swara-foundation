@@ -8,9 +8,14 @@ const donationSchema = new mongoose.Schema({
   description: String,
   weight: String,
   address: String,
-  date: String,        
-  timeSlot: String, 
-  status: { type: String, default: 'Pending' }
+  date: String,
+  timeSlot: String,
+  status: { type: String, default: 'Pending' },
+  isActive: { type: Boolean, default: true },
+  attendedBy: { type: String, default: "" },
+  pickupRemarks: { type: String, default: "" },
+  deleted: { type: Boolean, default: false },
+  completedAt: { type: Date }
 });
 
 module.exports = mongoose.model('Donation', donationSchema);

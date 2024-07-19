@@ -14,6 +14,7 @@ const AdminPanel = () => {
           <Nav className="flex-column">
             <Nav.Link as={Link} to="/admin/uncompleted">Uncompleted</Nav.Link>
             <Nav.Link as={Link} to="/admin/completed">Completed</Nav.Link>
+            <Nav.Link as={Link} to="/admin/trash">Trash</Nav.Link>
             <Button 
               onClick={() => logout({ returnTo: window.location.origin })}
               variant="danger"
@@ -27,6 +28,7 @@ const AdminPanel = () => {
           <Routes>
             <Route path="uncompleted" element={<DonationList type="uncompleted" />} />
             <Route path="completed" element={<DonationList type="completed" />} />
+            <Route path="trash" element={<DonationList type="trash" />} />
           </Routes>
         </Col>
       </Row>

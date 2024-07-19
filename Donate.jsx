@@ -21,6 +21,7 @@ const Donate = () => {
   });
   const [submissionMessage, setSubmissionMessage] = useState('');
   const [availabilityMessage, setAvailabilityMessage] = useState('');
+  const [phoneError, setPhoneError] = useState('');
 
   const navigate = useNavigate();
   const validPincodes = [110001, 110002, 110003, 110004, 110005];
@@ -41,6 +42,14 @@ const Donate = () => {
       ...prevState,
       [id]: value
     }));
+
+    if (id === 'phone') {
+      if (value.length !== 10) {
+        setPhoneError('Please enter a valid 10-digit phone number.');
+      } else {
+        setPhoneError('');
+      }
+    }
   };
 
   const checkAvailability = async () => {
@@ -57,6 +66,10 @@ const Donate = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (phoneError) {
+      return;
+    }
+
     const isAvailable = await checkAvailability();
     if (!isAvailable) {
       setAvailabilityMessage('Time slot already booked, please choose another.');
@@ -150,7 +163,8 @@ const Donate = () => {
                 </Col>
                 <Col md={6}>
                   <Form.Group controlId="phone">
-                    <Form.Control type="tel" placeholder="Phone Number" className="form-input" value={formData.phone} onChange={handleChange} required />
+                    <Form.Control type="number" placeholder="Phone Number" className="form-input" value={formData.phone} onChange={handleChange} required />
+                    {phoneError && <Alert variant="danger" className="mt-2">{phoneError}</Alert>}
                   </Form.Group>
                 </Col>
               </Row>
@@ -193,7 +207,7 @@ const Donate = () => {
                   </Form.Group>
                 </Col>
               </Row>
-              <Button type="submit" variant="primary">Submit</Button>
+              <Button type="submit" variant="primary" disabled={formData.phone.length !== 10}>Submit</Button>
             </Form>
           )}
           {availabilityMessage && <Alert variant="warning">{availabilityMessage}</Alert>}

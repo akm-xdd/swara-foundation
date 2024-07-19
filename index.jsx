@@ -63,7 +63,7 @@ import Donate from './pages/Donate';
 import AdminPanel from './pages/AdminPanel';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { RequireAuth } from './components/RequireAuth';
-
+import { Toaster } from 'sonner';
 
 function App() {
   return (
@@ -74,6 +74,7 @@ function App() {
         redirect_uri: window.location.origin + '/admin',
       }}
     >
+      <Toaster  richColors/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
