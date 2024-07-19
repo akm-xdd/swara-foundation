@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Table, Alert, Form, Row, Col, Modal } from 'react-bootstrap';
+import { Button, Table, Form, Row, Col, Modal } from 'react-bootstrap';
 import moment from 'moment';
 import { toast } from 'sonner';
 
@@ -200,7 +200,7 @@ const DonationList = ({ type }) => {
         </tbody>
       </Table>
 
-      <Modal show={showEditModal} onHide={handleCloseEditModal}>
+      <Modal show={showEditModal} onHide={handleCloseEditModal} dialogClassName="modal-dialog-fullscreen">
         <Modal.Header closeButton>
           <Modal.Title>Edit Donation</Modal.Title>
         </Modal.Header>
@@ -251,14 +251,18 @@ const DonationList = ({ type }) => {
                   </Form.Group>
                 </Col>
               </Row>
-              <Form.Group controlId="description">
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  value={editDonation.description}
-                  onChange={handleChange}
-                />
-              </Form.Group>
+              <Row>
+                <Col md={12}>
+                  <Form.Group controlId="description">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={editDonation.description}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
               <Row>
                 <Col md={6}>
                   <Form.Group controlId="weight">
@@ -296,15 +300,32 @@ const DonationList = ({ type }) => {
                   <Form.Group controlId="timeSlot">
                     <Form.Label>Time Slot</Form.Label>
                     <Form.Control
-                      as="select"
+                      type="text"
                       value={editDonation.timeSlot}
                       onChange={handleChange}
-                    >
-                      <option value="7-8">7-8 AM</option>
-                      <option value="8-9">8-9 AM</option>
-                      <option value="9-10">9-10 AM</option>
-                      <option value="10-11">10-11 AM</option>
-                    </Form.Control>
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={6}>
+                  <Form.Group controlId="status">
+                    <Form.Label>Status</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={editDonation.status}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={6}>
+                  <Form.Group controlId="completedAt">
+                    <Form.Label>Completed At</Form.Label>
+                    <Form.Control
+                      type="datetime-local"
+                      value={editDonation.completedAt ? moment(editDonation.completedAt).format('YYYY-MM-DDTHH:mm') : ''}
+                      onChange={handleChange}
+                    />
                   </Form.Group>
                 </Col>
               </Row>
@@ -330,31 +351,22 @@ const DonationList = ({ type }) => {
                   </Form.Group>
                 </Col>
               </Row>
+              <Button variant="primary" onClick={handleSaveChanges}>Save Changes</Button>
             </Form>
           )}
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseEditModal}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleSaveChanges}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
 
-      <Modal show={showWarningModal} onHide={handleCloseWarningModal}>
+      <Modal show={showWarningModal} onHide={handleCloseWarningModal} dialogClassName="modal-dialog-fullscreen">
         <Modal.Header closeButton>
-          <Modal.Title>Warning</Modal.Title>
+          <Modal.Title>Confirm Deletion</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Are you sure you want to move this donation to trash?</Modal.Body>
+        <Modal.Body>
+          <p>Are you sure you want to move this donation to trash?</p>
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseWarningModal}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={handleConfirmDelete}>
-            Proceed
-          </Button>
+          <Button variant="secondary" onClick={handleCloseWarningModal}>Cancel</Button>
+          <Button variant="danger" onClick={handleConfirmDelete}>Confirm</Button>
         </Modal.Footer>
       </Modal>
     </div>

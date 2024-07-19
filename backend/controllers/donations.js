@@ -59,11 +59,26 @@ exports.restoreDonation = async (req, res) => {
 };
 
 // Check availability
+
+// exports.checkAvailability = async (req, res) => {
+//   try {
+//     const { date, timeSlot } = req.query;
+//     const donation = await Donation.findOne({ date, timeSlot });
+//     if (donation) {
+//       res.status(200).json({ available: false });
+//     } else {
+//       res.status(200).json({ available: true });
+//     }
+//   } catch (err) {
+//     res.status(400).json({ message: err.message });
+//   }
+// };
+
 exports.checkAvailability = async (req, res) => {
   try {
     const { date, timeSlot } = req.query;
-    const donation = await Donation.findOne({ date, timeSlot });
-    if (donation) {
+    const donation = await Donation.findOne({ date, timeSlot, deleted: false });
+    if (donation && donation.status !== 'Completed') {
       res.status(200).json({ available: false });
     } else {
       res.status(200).json({ available: true });
