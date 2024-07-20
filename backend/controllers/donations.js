@@ -60,33 +60,31 @@ exports.restoreDonation = async (req, res) => {
 
 // Check availability
 
-// exports.checkAvailability = async (req, res) => {
-//   try {
-//     const { date, timeSlot } = req.query;
-//     const donation = await Donation.findOne({ date, timeSlot });
-//     if (donation) {
-//       res.status(200).json({ available: false });
-//     } else {
-//       res.status(200).json({ available: true });
-//     }
-//   } catch (err) {
-//     res.status(400).json({ message: err.message });
-//   }
-// };
-
 exports.checkAvailability = async (req, res) => {
   try {
-    const { date, timeSlot } = req.query;
-    const donation = await Donation.findOne({ date, timeSlot, deleted: false });
-    if (donation && donation.status !== 'Completed') {
-      res.status(200).json({ available: false });
+    const { date, timeSlot, pincode } = req.query;
+
+    // Find donations with the same date and time slot
+    const existingDonation = await Donation.findOne({ date, timeSlot, deleted: false });
+
+    if (existingDonation) {
+      // If pincode is different and time slot is the same, deny
+      if (existingDonation.pincode !== pincode) {
+        res.status(200).json({ available: false });
+      } else {
+        // If pincode, date, and time slot are the same, allow
+        res.status(200).json({ available: true });
+      }
     } else {
+      // If no existing donation with the same date and time slot, allow
       res.status(200).json({ available: true });
     }
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
+
+
 
 // Update donation
 exports.updateDonation = async (req, res) => {

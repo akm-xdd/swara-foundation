@@ -7,10 +7,10 @@ import About from './pages/About';
 import NotFound from './pages/NotFound';
 import Layout from './components/Layout';
 import Donate from './pages/Donate';
-import AdminPanel from './pages/AdminPanel';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { RequireAuth } from './components/RequireAuth';
 import { Toaster } from 'sonner';
+import AdminPanel from './pages/Admin/AdminPanel';
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
             path="/admin/*"
             element={
               <RequireAuth>
-                <AdminPanel />
+                <AdminPanel/>
               </RequireAuth>
             }
           />
