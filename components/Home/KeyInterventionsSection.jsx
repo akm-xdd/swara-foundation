@@ -13,51 +13,47 @@ const KeyInterventionsSection = () => {
   };
 
   const imgStyle = {
-    maxWidth: '80%',
-    height: 'auto'
+    maxWidth: '360px',
+    height: 'auto',
+    borderRadius: '0.6rem',
+    padding: '0'
   };
+
 
   const rowStyle = {
     marginTop: '2rem',
-    marginBottom: '2rem'
+    marginBottom: '2rem',
+    justifyContent: 'center',
+    alignContent: 'center',
+    gap: "1rem"
   };
 
   return (
     <div className="section-3" style={sectionStyle}>
       <h1 className="heading" style={headingStyle}>Key Interventions under Swara Foundation</h1>
       <div className="container text-center">
-        <div className="row">
-          <div className="col">
+        <div className="row" style={rowStyle}>
             <img
               src="https://img.freepik.com/premium-vector/education-school-logo-design_586739-1335.jpg"
               style={imgStyle}
               alt="Education Support"
             />
-          </div>
-          <div className="col">
             <img
               src="https://img.freepik.com/free-vector/flat-international-women-s-day-badges-collection_23-2149260642.jpg"
               style={imgStyle}
               alt="Women's Empowerment"
             />
-          </div>
-        </div>
-        <div className="row" style={rowStyle}>
-          <div className="col">
             <img
               src="https://www.shutterstock.com/image-vector/illustration-icon-food-sharing-donation-600nw-2229819277.jpg"
               style={imgStyle}
               alt="Food Sharing"
             />
-          </div>
-          <div className="col">
             <img
               src="https://img.freepik.com/free-vector/charity-life-abstract-logo_1043-47.jpg"
               style={imgStyle}
               alt="Charity Life"
             />
           </div>
-        </div>
       </div>
     </div>
   );

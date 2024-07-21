@@ -13,8 +13,9 @@ const KeyInterventionsSection = () => {
   };
 
   const imgStyle = {
-    maxWidth: '80%',
-    height: 'auto'
+    maxWidth: '360px',
+    height: 'auto',
+    borderRadius: '0.6rem'
   };
 
   const rowStyle = {

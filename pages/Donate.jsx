@@ -6,10 +6,15 @@ import styled from 'styled-components';
 import moment from 'moment/moment';
 
 const DonateContainer = styled.div`
-  padding: 20px;
-  max-width: 1200px;
+  padding: 2rem 1.2rem;
   margin: 0 auto;
   text-align: center;
+  background-color: rgb(248, 249, 250);
+`;
+
+const DonateMain = styled.div`
+  max-width: 1200px;
+  margin: auto;
 `;
 
 const Heading = styled.h2`
@@ -27,12 +32,14 @@ const DonateSection = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 30px;
+  gap: 1rem;
 `;
 
 const DonateHalf = styled.div`
   flex: 1 1 45%;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: .6rem;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -249,68 +256,70 @@ const Donate = () => {
 
   return (
     <DonateContainer>
-      <Heading>Donate</Heading>
-      <Description>Your donation of clothes, money, or books can make a significant difference. Join us in our mission to support those in need.</Description>
-      <DonateSection>
-        <LeftHalf>
-          <SubHeading>Importance of Donation</SubHeading>
-          <QRCode src="https://storage.googleapis.com/dara-c1b52.appspot.com/daras_ai/media/a3202e58-17ef-11ee-9a70-8e93953183bb/cleaned_qr.png" alt="UPI QR Code" />
-          <Description>Scan the QR code to donate. Your generosity helps us reach more people in need.</Description>
-        </LeftHalf>
-        <RightHalf>
-          <SubHeading>Check Availability in Your Area</SubHeading>
-          <CheckSection>
-            <form>
-              <StyledInput 
-                type="text" 
-                value={pincode} 
-                onChange={(e) => setPincode(e.target.value)} 
-                placeholder="Enter your 6-digit pincode" 
-              />
-              <CheckButton type="button" onClick={handlePincodeCheck}>Check</CheckButton>
-            </form>
-          </CheckSection>
-          {showForm && (
-            <form className="donation-form mt-3" onSubmit={handleSubmit}>
-              <SubHeading>Donation Form</SubHeading>
-              <FormGrid>
-                <StyledInput type="text" id="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />
-                <StyledInput type="text" id="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
-                <StyledInput type="email" id="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-                <InputGroup>
-                  <InputGroupText>+91</InputGroupText>
-                  <StyledInput type="tel" id="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required />
-                </InputGroup>
-                <FullWidth>
-                  <StyledInput type="text" id="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
-                </FullWidth>
-                <FullWidth>
-                  <StyledTextarea id="description" placeholder="Description about donation" value={formData.description} onChange={handleChange} required />
-                </FullWidth>
-                <StyledSelect id="weight" value={formData.weight} onChange={handleChange} required>
-                  <option value="">Select weight</option>
-                  <option value="0-5kg">0-5 kg</option>
-                  <option value="5-10kg">5-10 kg</option>
-                  <option value="10-20kg">10-20 kg</option>
-                  <option value="20+kg">20+ kg</option>
-                </StyledSelect>
-                <StyledSelect id="timeSlot" value={formData.timeSlot} onChange={handleChange} required>
-                  <option value="">Select time slot</option>
-                  <option value="7-8">7-8 AM</option>
-                  <option value="8-9">8-9 AM</option>
-                  <option value="9-10">9-10 AM</option>
-                  <option value="10-11">10-11 AM</option>
-                </StyledSelect>
-                <StyledInput type="text" id="pincode" placeholder="Pincode" value={formData.pincode} readOnly />
-                <FullWidth>
-                  <StyledInput type="date" id="date" value={formData.date} onChange={handleChange} required />
-                </FullWidth>
-              </FormGrid>
-              <SubmitButton type="submit">Submit</SubmitButton>
-            </form>
-          )}
-        </RightHalf>
-      </DonateSection>
+      <DonateMain>
+        <Heading>Donate</Heading>
+        <Description>Your donation of clothes, money, or books can make a significant difference. Join us in our mission to support those in need.</Description>
+        <DonateSection>
+          <LeftHalf>
+            <SubHeading>Importance of Donation</SubHeading>
+            <QRCode src="https://storage.googleapis.com/dara-c1b52.appspot.com/daras_ai/media/a3202e58-17ef-11ee-9a70-8e93953183bb/cleaned_qr.png" alt="UPI QR Code" />
+            <Description>Scan the QR code to donate. Your generosity helps us reach more people in need.</Description>
+          </LeftHalf>
+          <RightHalf>
+            <SubHeading>Check Availability in Your Area</SubHeading>
+            <CheckSection>
+              <form>
+                <StyledInput
+                  type="text"
+                  value={pincode}
+                  onChange={(e) => setPincode(e.target.value)}
+                  placeholder="Enter your 6-digit pincode"
+                />
+                <CheckButton type="button" onClick={handlePincodeCheck}>Check</CheckButton>
+              </form>
+            </CheckSection>
+            {showForm && (
+              <form className="donation-form mt-3" onSubmit={handleSubmit}>
+                <SubHeading>Donation Form</SubHeading>
+                <FormGrid>
+                  <StyledInput type="text" id="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />
+                  <StyledInput type="text" id="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
+                  <StyledInput type="email" id="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+                  <InputGroup>
+                    <InputGroupText>+91</InputGroupText>
+                    <StyledInput type="tel" id="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required />
+                  </InputGroup>
+                  <FullWidth>
+                    <StyledInput type="text" id="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
+                  </FullWidth>
+                  <FullWidth>
+                    <StyledTextarea id="description" placeholder="Description about donation" value={formData.description} onChange={handleChange} required />
+                  </FullWidth>
+                  <StyledSelect id="weight" value={formData.weight} onChange={handleChange} required>
+                    <option value="">Select weight</option>
+                    <option value="0-5kg">0-5 kg</option>
+                    <option value="5-10kg">5-10 kg</option>
+                    <option value="10-20kg">10-20 kg</option>
+                    <option value="20+kg">20+ kg</option>
+                  </StyledSelect>
+                  <StyledSelect id="timeSlot" value={formData.timeSlot} onChange={handleChange} required>
+                    <option value="">Select time slot</option>
+                    <option value="7-8">7-8 AM</option>
+                    <option value="8-9">8-9 AM</option>
+                    <option value="9-10">9-10 AM</option>
+                    <option value="10-11">10-11 AM</option>
+                  </StyledSelect>
+                  <StyledInput type="text" id="pincode" placeholder="Pincode" value={formData.pincode} readOnly />
+                  <FullWidth>
+                    <StyledInput type="date" id="date" value={formData.date} onChange={handleChange} required />
+                  </FullWidth>
+                </FormGrid>
+                <SubmitButton type="submit">Submit</SubmitButton>
+              </form>
+            )}
+          </RightHalf>
+        </DonateSection>
+      </DonateMain>
     </DonateContainer>
   );
 };

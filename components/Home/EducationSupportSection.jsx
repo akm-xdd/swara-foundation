@@ -18,6 +18,8 @@ const EducationSupportSection = () => {
     width: '100%',
     padding: '2rem 1rem',
     backgroundColor: 'white',
+    maxWidth: "1200px",
+    margin: "auto"
   };
 
   const headingStyle = {
@@ -34,20 +36,26 @@ const EducationSupportSection = () => {
   const imgStyle = {
     height: '300px',
     width: '300px',
-    objectFit: 'cover'
+    objectFit: 'cover',
+    borderRadius: '.6rem'
   };
+
+  const rowStyle = {
+    justifyContent: 'center',
+    gap: "1.6rem"
+  }
 
   return (
     <div style={sectionStyle}>
       <h1 style={headingStyle}>Your support is vital in guaranteeing education for everyone!</h1>
       <div className="container">
-        <div className="row">
-          <div className="col-12 col-md-6">
+        <div className="row" style={rowStyle}>
+          <div className="col-12 col-md-8">
             <p style={paraStyle}>
               {isMobile ? reducedText : fullText}
             </p>
           </div>
-          <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">
+          <div className="col-12 col-md-3 d-flex justify-content-center align-items-center">
             <img
               src="https://media.istockphoto.com/id/1162324751/photo/indian-girl.jpg?s=1024x1024&w=is&k=20&c=4pHYbGtNvGDZuLtXEemHOAVAch_VPOfXQD3Lj-i80gA="
               style={imgStyle}
