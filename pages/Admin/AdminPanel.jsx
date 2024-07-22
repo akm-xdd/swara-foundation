@@ -11,11 +11,11 @@ const AdminPanel = () => {
     <div>
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand as={Link} to="/admin/uncompleted">Admin Panel</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/admin">Admin Panel</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/admin/uncompleted">Uncompleted</Nav.Link>
+              {/* <Nav.Link as={Link} to="/admin/uncompleted">Uncompleted</Nav.Link> */}
               <Nav.Link as={Link} to="/admin/completed">Completed</Nav.Link>
               <Nav.Link as={Link} to="/admin/trash">Trash</Nav.Link>
             </Nav>
@@ -31,7 +31,7 @@ const AdminPanel = () => {
       </Navbar>
       <Container fluid className="mt-3">
         <Routes>
-          <Route path="uncompleted" element={<DonationList type="uncompleted" />} />
+          <Route path="/" element={<DonationList type="uncompleted" />} />
           <Route path="completed" element={<DonationList type="completed" />} />
           <Route path="trash" element={<DonationList type="trash" />} />
         </Routes>

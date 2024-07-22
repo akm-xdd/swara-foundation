@@ -11,6 +11,8 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { RequireAuth } from './components/RequireAuth';
 import { Toaster } from 'sonner';
 import AdminPanel from './pages/Admin/AdminPanel';
+import Media from './pages/Media';
+import OurWork from './pages/OurWork';
 
 function App() {
   return (
@@ -27,8 +29,8 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
-            <Route path="our-work" element={<h1>Here goes our work</h1>} />
-            <Route path="media" element={<h1>Here goes media</h1>} />
+            <Route path="our-work" element={<OurWork/>} />
+            <Route path="media" element={<Media/>} />
             <Route path="donate" element={<Donate />} />
             <Route path="*" element={<NotFound />} />
           </Route>

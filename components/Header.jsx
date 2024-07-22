@@ -38,7 +38,7 @@ export default function Header() {
                     style={({ isActive }) => isActive ? activeStyles : null}
                     onClick={handleMenuToggle}
                 >
-                    Our Work
+                    Contributions
                 </NavLink>
                 <NavLink
                     to="/media"
