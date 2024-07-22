@@ -355,10 +355,15 @@ import moment from 'moment/moment';
 import { Alert } from 'react-bootstrap';
 
 const DonateContainer = styled.div`
-  padding: 20px;
-  max-width: 1200px;
+  padding: 2rem 1.2rem;
   margin: 0 auto;
   text-align: center;
+  background-color: rgb(248, 249, 250);
+`;
+
+const DonateMain = styled.div`
+  max-width: 1200px;
+  margin: auto;
 `;
 
 const Heading = styled.h2`
@@ -376,12 +381,14 @@ const DonateSection = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 30px;
+  gap: 1rem;
 `;
 
 const DonateHalf = styled.div`
   flex: 1 1 45%;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: .6rem;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;

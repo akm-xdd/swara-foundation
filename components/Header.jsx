@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import imageUrl from "/assets/images/donate.png";
+import styles from "./Header.module.css"
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function Header() {
     };
 
     return (
-        <header>
+        <header className={styles.header}>
             <Link className="site-logo" to="/">Swara Foundation</Link>
             <nav className={isMenuOpen ? "open" : ""}>
                 <NavLink

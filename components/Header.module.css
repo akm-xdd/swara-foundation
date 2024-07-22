@@ -1,0 +1,13 @@
+.header a {
+    text-wrap: nowrap;
+}
+
+.header a:hover {
+    text-decoration: none;
+}
+
+/* @media screen and (max-width: 960px) {
+    .header > nav > a{
+        padding: 5px 1rem;
+    }    
+} */
