@@ -107,6 +107,12 @@ nav {
         max-width: 300px;
         padding: 1rem;
         z-index: 1000;
+        width: 100%;
+        max-width: 100%;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.1);
+        border-top: solid;
     }
 
     nav.open {
@@ -192,20 +198,20 @@ main {
 
 .c-item {
     height: 100vh;
-  }
-  
-  .c-img {
+}
+
+.c-img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     filter: brightness(0.6);
-  }
-  
+}
+
 
 
 .active-link {
-  background-color: lightgreen !important;
-  color: white !important;
+    background-color: lightgreen !important;
+    color: white !important;
 }
 
 
@@ -213,58 +219,60 @@ main {
 
 /* DonationList.css */
 
-.donation-table th, .donation-table td {
+.donation-table th,
+.donation-table td {
     vertical-align: middle;
     text-align: center;
-  }
-  
-  .actions {
+}
+
+.actions {
     display: flex;
     justify-content: space-around;
-  }
-  
-  .actions .btn {
+}
+
+.actions .btn {
     margin: 0 5px;
-  }
+}
+
 /* AdminPanel.css */
 
 .sidebar {
     height: 100vh;
     padding-top: 20px;
     background-color: #f8f9fa;
-  }
-  
-  .sidebar .nav-link {
+}
+
+.sidebar .nav-link {
     margin: 10px 0;
     color: #000;
     font-weight: 500;
-  }
-  
-  .sidebar .nav-link.active {
+}
+
+.sidebar .nav-link.active {
     font-weight: bold;
     color: #28a745;
-  }
-  
-  .content {
+}
+
+.content {
     padding: 20px;
-  }
-  
-  .table td, .table th {
+}
+
+.table td,
+.table th {
     vertical-align: middle;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .sidebar {
-      height: auto;
-      padding: 10px 0;
+        height: auto;
+        padding: 10px 0;
     }
-    
+
     .sidebar .nav-link {
-      margin: 5px 0;
+        margin: 5px 0;
     }
-    
+
     .content {
-      padding: 10px;
+        padding: 10px;
     }
-  }
-  
+}
